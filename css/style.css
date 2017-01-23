@@ -1,0 +1,42 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  width: 700px;
+  height: 100px;
+}
+
+.wordline,
+.inputline {
+  padding: 10px;
+  font: 500 1em 'Ubuntu Mono';
+  color: #3d3d3d;
+  width: 100%;
+}
+
+.inputline {
+  outline: none;
+  border: none;
+  border-bottom: 2px solid #3d3d3d;
+}
+
+.wordline span {
+  color: #aaa;
+}
+
+span.untyped {
+  color: #3d3d3d;
+}
