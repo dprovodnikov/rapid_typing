@@ -68,13 +68,13 @@
       untyped.eq(0).removeClass(untypedClass);
       output = true;
 
-      if(untyped.length == 1) {
-        letters = [];
-        wordline.text('');
-        inputline.val('');
+    }
 
-        output = false
-      }
+    if(untyped.length == 0 && letter == ' ') {
+      letters = [];
+      wordline.text('');
+      inputline.val('');
+      output = false
     }
 
     return output;
