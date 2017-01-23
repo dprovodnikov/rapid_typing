@@ -33,6 +33,10 @@ body {
   border-bottom: 2px solid #3d3d3d;
 }
 
+.wrong {
+  background: yellow;
+}
+
 .wordline span {
   color: #aaa;
 }

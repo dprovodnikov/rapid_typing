@@ -4,7 +4,14 @@ let words = 'Sometimes the same is different'.split('');
 
 
 inputline.on('keypress', function(e) {
-  return check(String.fromCharCode(e.keyCode));
+  let isOk = check(String.fromCharCode(e.keyCode));
+
+  if(!isOk) {
+    inputline.addClass('wrong');
+    setTimeout(() => inputline.removeClass('wrong'), 200);
+  }
+
+  return isOk;
 });
 
 inputline.on('keydown', function(e) {
