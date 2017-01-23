@@ -1,43 +1,97 @@
-let inputline = $('.inputline');
-let wordline = $('.wordline');
-let words = 'Sometimes the same is different'.split('');
+(function() {
+  let inputline, wordline, letters, untypedClass, wrongClass, ctrlPressed;
 
+  inputline = $('.inputline');
+  wordline = $('.wordline');
+  letters = '';
+  untypedClass = 'untyped';
+  wrongClass = 'wrong';
+  ctrlPressed = false;
 
-inputline.on('keypress', function(e) {
-  let isOk = check(String.fromCharCode(e.keyCode));
+  inputline.keypress(e => {
+    let isOk = check(String.fromCharCode(e.keyCode));
 
-  if(!isOk) {
-    inputline.addClass('wrong');
-    setTimeout(() => inputline.removeClass('wrong'), 200);
+    if(!isOk) {
+      if(letters.length)
+        highlight();
+      else
+        fill();
+    }
+
+    return isOk;
+  });
+
+  // backspace is forbidden, but with ctrl it's possible to delete the entire last word
+  inputline.keydown(e => {
+    if(e.keyCode == 17) ctrlPressed = true;
+
+    if(e.keyCode == 8) {
+      if(ctrlPressed) {
+        ctrlPressed = false;
+        let curValue = inputline.val().trim();
+
+        let lastSpaceIndex = curValue.lastIndexOf(' ');
+
+        rollback(lastSpaceIndex);
+
+      } else 
+        return false
+    }
+
+  });
+
+  function highlight() {
+    inputline.addClass(wrongClass);
+    let untyped = $(`.${untypedClass}`);
+    untyped.addClass(wrongClass)
+    setTimeout(() => {
+      inputline.removeClass(wrongClass)
+      untyped.removeClass(wrongClass)
+    } , 200);
+
+    return false
   }
 
-  return isOk;
-});
-
-inputline.on('keydown', function(e) {
-  return e.keyCode != 8
-});
-
-function check(letter) {
-  let untypedClass = 'untyped';
-  let untyped = $(`.${untypedClass}`);
-
-  let output = false;
-
-  if(letter == untyped.eq(0).text()) {
-    untyped.eq(0).removeClass(untypedClass);
-    output = true;
+  function rollback(index) {
+    let letters = $('.letter');
+    for(let i = index+1; i < letters.length; i++) {
+      letters.eq(i).addClass(untypedClass);
+    }
   }
 
-  return output;
-}
+  function check(letter) {
+    let untyped = $(`.${untypedClass}`);
 
-(function fill() {
-  let markup = '';
+    let output = false;
 
-  for(let word of words) {
-    markup += `<span class="untyped">${word}</span>`
+    if(letter == untyped.eq(0).text()) {
+      untyped.eq(0).removeClass(untypedClass);
+      output = true;
+
+      if(untyped.length == 1) {
+        letters = [];
+        wordline.text('');
+        inputline.val('');
+
+        output = false
+      }
+    }
+
+    return output;
   }
 
-  wordline.append(markup);
+  function fill() {
+    letters = 'Sometimes the same is different, but mostly its the same'.split('');
+
+    let markup = '';
+
+    for(let letter of letters)
+      markup += `<span class="untyped letter">${letter}</span>`
+
+    wordline.append(markup);
+
+    inputline.width(wordline.width());
+  }
+
+  fill();
 })()
