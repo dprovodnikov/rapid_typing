@@ -1,5 +1,5 @@
-(function(utils) {
-  let inputline, wordline, letters, untypedClass, wrongClass, ctrlPressed;
+(function(utils, counter) {
+  let inputline, wordline, letters, untypedClass, wrongClass, ctrlPressed, errorCounter;
 
   inputline = $('.inputline');
   wordline = $('.wordline');
@@ -12,11 +12,8 @@
     let isOk = check(String.fromCharCode(e.keyCode));
 
     if(!isOk) {
-      if(letters.length)
-        highlight();
-      else
-        fill();
-    }
+      letters.length ? highlight() : fill();
+    } 
 
     return isOk;
   });
@@ -39,7 +36,8 @@
     }
 
     if(e.keyCode == 13) {
-      if( $(`.${untypedClass}`).length == 0) clean();
+      if( $(`.${untypedClass}`).length == 0)
+        clean();
     } 
 
   });
@@ -53,6 +51,8 @@
       untyped.removeClass(wrongClass)
     } , 200);
 
+    console.log( errorCounter() );
+    
     return false
   }
 
@@ -90,6 +90,8 @@
   function fill() {
     letters = utils.getWords(4);
 
+    errorCounter = counter();
+
     let markup = '';
     for(let letter of letters)
       markup += `<span class="untyped letter">${letter.toLowerCase()}</span>`
@@ -101,4 +103,4 @@
 
   fill();
   
-})(window.utils)
+})(window.utils, window.counter);

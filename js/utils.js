@@ -1,4 +1,4 @@
-(function(words) {
+window.utils = (function(words) {
   const rand = (low, high) => Math.floor((high-low+1)*Math.random())+Math.floor(low);
 
   const getWords = (number) => {
@@ -10,8 +10,6 @@
     return output.join(' ');
   }
 
-  window.utils = {
-    getWords: getWords
-  };
+  return { getWords: getWords }
 
 })(window.words)
