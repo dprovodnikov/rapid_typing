@@ -1,16 +1,22 @@
-window.counter = (function() {
-  let count = 0;
+class Counter {
+  constructor(start = 0) { this.count = start }
 
-  return function() {
-    let output = function() {
-      return ++count;
-    }
-
-    output.get = function() { return count }
-    output.set = function(arg) { count = arg }
-    output.reset = function() { count = 0 }
-
-    return output;
+  get() {
+    return this.count
   }
 
-})()
+  set(count) {
+    this.count = count
+  }
+
+  up() {
+    return ++this.count
+  }
+
+  reset() {
+    this.count = 0
+  }
+
+}
+
+window.counter = Counter;

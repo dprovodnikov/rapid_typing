@@ -1,5 +1,5 @@
-(function(utils, counter) {
-  let inputline, wordline, letters, untypedClass, wrongClass, ctrlPressed, errorCounter;
+(function(utils, Counternter, ErrorStats) {
+  let inputline, wordline, letters, untypedClass, wrongClass, ctrlPressed, errorCounter, errorStats;
 
   inputline = $('.inputline');
   wordline = $('.wordline');
@@ -43,24 +43,24 @@
   });
 
   function highlight() {
-    inputline.addClass(wrongClass);
     let untyped = $(`.${untypedClass}`);
+
     untyped.addClass(wrongClass)
+    inputline.addClass(wrongClass);
+
     setTimeout(() => {
       inputline.removeClass(wrongClass)
       untyped.removeClass(wrongClass)
     } , 200);
-
-    console.log( errorCounter() );
     
+    errorCounter.up();
+
     return false
   }
 
   function rollback(index) {
-    let letters = $('.letter');
-    for(let i = index+1; i < letters.length; i++) {
+    for(let i = index+1; i < $('.letters').length; i++)
       letters.eq(i).addClass(untypedClass);
-    }
   }
 
   function clean() {
@@ -87,10 +87,19 @@
     return output;
   }
 
-  function fill() {
+  function init() {
+    errorStats = new ErrorStats();
+    errorCounter = new Counter();
+    fill(true);
+  }
+
+  function fill(init=false) {
     letters = utils.getWords(4);
 
-    errorCounter = counter();
+    if(!init) {
+      errorStats.update(errorCounter, letters);
+      errorCounter.reset();
+    }
 
     let markup = '';
     for(let letter of letters)
@@ -101,6 +110,6 @@
     inputline.width(wordline.width());
   }
 
-  fill();
+  init();
   
-})(window.utils, window.counter);
+})(window.utils, window.counter, window.ErrorStats);

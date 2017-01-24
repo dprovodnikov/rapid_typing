@@ -8,12 +8,21 @@
 <body>
 
   <div class="container">
-    <input class="inputline" type="text" autofocus/>
+    <div class="topbar">
+      <div class="error-stats">
+        <span>Errors:</span>
+        <span class="error-current"></span>
+        <span>/</span>
+        <span class="error-average"></span>
+      </div>
+    </div>
+    <input class="inputline" type="text" spellcheck="false" autofocus/>
     <div class="wordline"></div>
   </div>
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="js/words.js"></script>
+  <script src="js/error_stats.js"></script>
   <script src="js/utils.js"></script>
   <script src="js/counter.js"></script>
   <script src="js/main.js"></script>
