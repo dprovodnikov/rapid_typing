@@ -1,4 +1,4 @@
-(function() {
+(function(utils) {
   let inputline, wordline, letters, untypedClass, wrongClass, ctrlPressed;
 
   inputline = $('.inputline');
@@ -38,6 +38,10 @@
         return false
     }
 
+    if(e.keyCode == 13) {
+      if( $(`.${untypedClass}`).length == 0) clean();
+    } 
+
   });
 
   function highlight() {
@@ -59,6 +63,12 @@
     }
   }
 
+  function clean() {
+    letters = [];
+    wordline.text('');
+    inputline.val('');
+  }
+
   function check(letter) {
     let untyped = $(`.${untypedClass}`);
 
@@ -67,25 +77,20 @@
     if(letter == untyped.eq(0).text()) {
       untyped.eq(0).removeClass(untypedClass);
       output = true;
-
     }
 
     if(untyped.length == 0 && letter == ' ') {
-      letters = [];
-      wordline.text('');
-      inputline.val('');
       output = false
+      clean();
     }
 
     return output;
   }
 
   function fill() {
-    // letters = 'Sometimes the same is different, but mostly its the same'.split('');
-    letters = utils.getWords(8);
+    letters = utils.getWords(4);
 
     let markup = '';
-
     for(let letter of letters)
       markup += `<span class="untyped letter">${letter.toLowerCase()}</span>`
 
@@ -95,4 +100,5 @@
   }
 
   fill();
-})()
+  
+})(window.utils)
