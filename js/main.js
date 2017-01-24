@@ -81,12 +81,13 @@
   }
 
   function fill() {
-    letters = 'Sometimes the same is different, but mostly its the same'.split('');
+    // letters = 'Sometimes the same is different, but mostly its the same'.split('');
+    letters = utils.getWords(8);
 
     let markup = '';
 
     for(let letter of letters)
-      markup += `<span class="untyped letter">${letter}</span>`
+      markup += `<span class="untyped letter">${letter.toLowerCase()}</span>`
 
     wordline.append(markup);
 
