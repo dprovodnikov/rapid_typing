@@ -57,7 +57,10 @@ span.untyped.wrong {
 * topbar
 *************/
 .topbar {
-  width: 50vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 30vw;
   position: absolute;
   top: 100px;
   left: 0;
@@ -65,7 +68,8 @@ span.untyped.wrong {
   margin: 0 auto;
 }
 
-.error-stats {
+.error-stats,
+.speed-stats {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -73,10 +77,12 @@ span.untyped.wrong {
   color: #3d3d3d;
 }
 
-.error-stats span {
+.error-stats span,
+.speed-stats span {
   padding: 0 2px;
 }
-.error-stats span:first-of-type {
+.error-stats span:first-of-type,
+.speed-stats span:first-of-type {
   color: #000;
   font-weight: bold;
 }

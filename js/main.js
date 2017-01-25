@@ -1,5 +1,7 @@
-(function(utils, Counternter, ErrorStats) {
-  let inputline, wordline, letters, untypedClass, wrongClass, ctrlPressed, errorCounter, errorStats;
+(function(utils, Counternter, ErrorStats, SpeedStats) {
+  let inputline, wordline, letters,
+      untypedClass, wrongClass, ctrlPressed,
+      errorCounter, errorStats, speedStats, timeStart, timeEnd;
 
   inputline = $('.inputline');
   wordline = $('.wordline');
@@ -9,6 +11,11 @@
   ctrlPressed = false;
 
   inputline.keypress(e => {
+
+    if(letters.length == $(`.${untypedClass}`).length && e.keyCode != 13) {
+      timeStart = Date.now();
+    }
+
     let isOk = check(String.fromCharCode(e.keyCode));
 
     if(!isOk) {
@@ -36,8 +43,9 @@
     }
 
     if(e.keyCode == 13) {
-      if( $(`.${untypedClass}`).length == 0)
+      if( $(`.${untypedClass}`).length == 0) {
         clean();
+      }
     } 
 
   });
@@ -89,6 +97,7 @@
 
   function init() {
     errorStats = new ErrorStats();
+    speedStats = new SpeedStats();
     errorCounter = new Counter();
     fill(true);
   }
@@ -98,6 +107,11 @@
 
     if(!init) {
       errorStats.update(errorCounter, letters);
+
+      let timeEnd = Date.now();
+
+      speedStats.update(timeEnd - timeStart, letters);
+
       errorCounter.reset();
     }
 
@@ -112,4 +126,4 @@
 
   init();
   
-})(window.utils, window.counter, window.ErrorStats);
+})(window.utils, window.counter, window.ErrorStats, window.SpeedStats);
