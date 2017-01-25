@@ -29,4 +29,4 @@ class SpeedStats {
 
 }
 
-window.SpeedStats = SpeedStats;
+export default SpeedStats;

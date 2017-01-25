@@ -1,3 +1,8 @@
+import utils from './utils';
+import SpeedStats from './speed_stats'
+import ErrorStats from './error_stats';
+import Counter from './counter';
+
 class App {
   constructor(mode) {
     this.inputline = $('.inputline');
@@ -11,6 +16,8 @@ class App {
     this.untypedClass = 'untyped';
     this.wrongClass = 'wrong';
     this.ctrlPressed = false;
+
+    console.log(utils)
 
     this.bindEvents();
 

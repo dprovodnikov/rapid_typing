@@ -19,4 +19,4 @@ class Counter {
 
 }
 
-window.counter = Counter;
+export default Counter;

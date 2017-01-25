@@ -29,4 +29,4 @@ class ErrorStats {
 
 }
 
-window.ErrorStats = ErrorStats;
+export default ErrorStats;
