@@ -1,10 +1,10 @@
 {
-  "name": "klava",
-  "version": "1.0.0",
-  "description": "",
+  "name": "rapid_typing",
+  "version": "0.0.1",
+  "description": "A simple keyboard trainer to help on developing fast ten-typing skills",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app.js"
   },
   "repository": {
     "type": "git",
@@ -21,5 +21,8 @@
     "babel-loader": "^6.2.10",
     "babel-preset-es2015": "^6.22.0",
     "webpack": "^1.14.0"
+  },
+  "dependencies": {
+    "express": "^4.14.0"
   }
 }

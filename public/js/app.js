@@ -17,8 +17,6 @@ class App {
     this.wrongClass = 'wrong';
     this.ctrlPressed = false;
 
-    console.log(utils)
-
     this.bindEvents();
 
     this.fill(true);

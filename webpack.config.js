@@ -1,9 +1,10 @@
 module.exports = {
 
+  context: './public',
   entry: './js/app.js',
 
   output: {
-    path: './build',
+    path: './public/build',
     filename: 'build.js'
   },
 
