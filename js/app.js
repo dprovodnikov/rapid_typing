@@ -74,8 +74,9 @@ class App {
   }
 
   rollback(index) {
-    for(let i = index+1; i < $('.letters').length; i++)
-      this.letters.eq(i).addClass(this.untypedClass);
+    let letterEls = $('.letter');
+    for(let i = index+1; i < letterEls.length; i++)
+      letterEls.eq(i).addClass(this.untypedClass);
   }
 
   clean() {
@@ -103,7 +104,7 @@ class App {
   }
 
   fill(isInit) {
-    this.letters = utils.getWords(4);
+    this.letters = utils.getWords(8);
 
     if(!isInit) {
       this.errorStats.update(this.errorCounter, this.letters);

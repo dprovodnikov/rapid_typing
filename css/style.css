@@ -19,7 +19,7 @@ body {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  width: 900px;
+  min-width: 1000px;
   height: 100px;
 }
 
@@ -60,7 +60,7 @@ span.untyped.wrong {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 30vw;
+  width: 800px;
   position: absolute;
   top: 100px;
   left: 0;
