@@ -4,7 +4,8 @@
   "description": "A simple keyboard trainer to help on developing fast ten-typing skills",
   "main": "index.js",
   "scripts": {
-    "start": "node app.js"
+    "start": "node app.js",
+    "postinstall": "webpack"
   },
   "repository": {
     "type": "git",

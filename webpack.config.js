@@ -1,14 +1,12 @@
 module.exports = {
 
-  context: './public',
-  entry: './js/app.js',
+  entry: './public/js/app.js',
 
   output: {
     path: './public/build',
-    filename: 'build.js'
+    filename: './build.js'
   },
 
-  watch: true,
   devtool: 'inline-source-map',
 
   module: {
