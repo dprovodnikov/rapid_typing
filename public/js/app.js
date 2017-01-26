@@ -1,4 +1,4 @@
-import utils from './utils';
+import Generator from './generator';
 import SpeedStats from './speed_stats'
 import ErrorStats from './error_stats';
 import Counter from './counter';
@@ -11,6 +11,7 @@ class App {
     this.errorStats = new ErrorStats();
     this.speedStats = new SpeedStats();
     this.errorCounter = new Counter();
+    this.generator = new Generator({ interval: 6e4, number: 8 });
     this.letters = '';
 
     this.untypedClass = 'untyped';
@@ -19,6 +20,10 @@ class App {
 
     this.bindEvents();
 
+    /*
+    * true means that it's an initial fill,
+    * so the function will not do certain things like statistic update requests
+    */
     this.fill(true);
   }
 
@@ -109,7 +114,7 @@ class App {
   }
 
   fill(isInit) {
-    this.letters = utils.getWords(8);
+    this.letters = this.generator.getWords(8);
 
     if(!isInit) {
       this.errorStats.update(this.errorCounter, this.letters);

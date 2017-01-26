@@ -8,6 +8,28 @@ html, body {
   height: 100%;
 }
 
+#github {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 40px;
+  width: 250px;
+  background: #3d3d3d;
+  color: #fff;
+  font: bold 15px 'Ubuntu Mono';
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transform: translate(-25%, 100%) rotate(-45deg);
+  transition: all .2s;
+}
+
+#github:hover {
+  background: #2d2d2d;
+  
+}
+
 body {
   display: flex;
   justify-content: center;
