@@ -130,7 +130,7 @@ class App {
     for(let letter of this.letters)
       markup += `<span class="untyped letter">${letter.toLowerCase()}</span>`
 
-    this.wordline.append(markup);
+    this.wordline.html(markup);
 
     this.inputline.width(this.wordline.width());
   }

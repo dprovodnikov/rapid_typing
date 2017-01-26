@@ -101,10 +101,39 @@ span.untyped.wrong {
 
 .error-stats span,
 .speed-stats span {
+  position: relative;
   padding: 0 2px;
+  cursor: pointer;
 }
 .error-stats span:first-of-type,
 .speed-stats span:first-of-type {
   color: #000;
   font-weight: bold;
+}
+
+.error-stats:hover .stats-hint,
+.speed-stats:hover .stats-hint {
+  opacity: .8;
+  transform: translateY(-140%);
+}
+
+.error-stats span:first-of-type i,
+.speed-stats span:first-of-type i {
+  font-size: 20px;
+  margin: 0 5px;
+}
+
+.stats-hint {
+  display: flex;
+  padding: 5px 7px;
+  position: absolute;
+  top: 0;
+  background: #000;
+  opacity: 0;
+  color: #fff;
+  transform: translateY(-165%);
+  white-space: nowrap;
+  transition: all .2s;
+  pointer-events: none;
+  border-radius: 3px;
 }

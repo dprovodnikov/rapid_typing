@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Rapid Typing</title>
+  <link href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Ubuntu+Mono" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
@@ -14,13 +15,19 @@
 
     <div class="topbar">
       <div class="speed-stats">
-        <span>Speed:</span>
+        <span>
+          <div class="stats-hint">Speed stats</div>
+          <i class="ion-speedometer"></i>
+        </span>
         <span class="speed-current">376</span>
         <span>/</span>
         <span class="speed-average">321</span>
       </div>
       <div class="error-stats">
-        <span>Errors:</span>
+        <span>
+          <div class="stats-hint">Error stats</div>
+          <i class="ion-bug"></i>
+        </span>
         <span class="error-current"></span>
         <span>/</span>
         <span class="error-average"></span>
