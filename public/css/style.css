@@ -137,3 +137,7 @@ span.untyped.wrong {
   pointer-events: none;
   border-radius: 3px;
 }
+
+.placeholder {
+  color: #aaa;
+}
