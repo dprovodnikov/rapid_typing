@@ -1,0 +1,44 @@
+import Wordline from '../wordline/wordline';
+
+export default class Application {
+  constructor() {
+    this.modeSelect = $('.mode-select');
+    this.modeTitle = $('.mode-title');
+
+    this.openClass = 'open';
+
+    this.mode = 'beginner';
+
+    this.setMode(this.mode);
+
+    this.bindEvents();
+  }
+
+  setMode(mode) {
+    this.modeTitle.html(mode);
+    this.wordline = new Wordline(mode);
+  }
+
+  bindEvents() {
+    this.modeSelect.click(e => e.stopPropagation());
+
+    this.modeTitle.click(e => {
+      e.stopPropagation();
+
+      this.modeSelect.toggleClass(this.openClass);
+    });
+
+    this.modeSelect.find('li').click(e => {
+      e.stopPropagation();
+
+      this.setMode( $(e.target).attr('id') );
+
+      this.modeSelect.removeClass(this.openClass);
+    });
+
+    $(document).click(e => {
+      this.modeSelect.removeClass(this.openClass);
+    });
+  }
+
+}

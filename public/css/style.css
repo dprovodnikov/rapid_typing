@@ -141,3 +141,58 @@ span.untyped.wrong {
 .placeholder {
   color: #aaa;
 }
+
+/************
+* mode select
+*************/
+.mode-select {
+  font: normal 15px 'Ubuntu Mono';
+  position: relative;
+  cursor: pointer;
+}
+
+.mode-select i {
+  font-size: 20px;
+}
+
+.mode-select.open .mode-dropdown {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.mode-dropdown {
+  position: absolute;
+  bottom: 0;
+  transform: translateY(115%);
+  opacity: 0;
+  background: #3d3d3d;
+  border-radius: 3px;
+  box-shadow: 2px 2px 10px 1px rgba(0, 0, 0, .2);
+  transition: all .2s;
+  color: #fff;
+  padding: 10px;
+  pointer-events: none;
+  min-width: 100%;
+}
+
+.mode-dropdown:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  width: 0;
+  transform: translateY(-90%);
+  border-bottom: 7px solid #3d3d3d;
+  border-top: 7px solid transparent;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+}
+
+.mode-dropdown li {
+  margin: 2px 0;
+  list-style: none;
+}
+
+.mode-dropdown li:hover {
+  color: lightgreen;
+}
+

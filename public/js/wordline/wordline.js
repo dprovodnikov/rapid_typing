@@ -3,10 +3,14 @@ import SpeedStats from './speed_stats'
 import ErrorStats from './error_stats';
 import Counter from './counter';
 
-class App {
+export default class Wordline {
   constructor(mode) {
+    this.mode = mode;
+
     this.inputline = $('.inputline');
     this.wordline = $('.wordline');
+
+    this.inputline.val('')
 
     this.errorStats = new ErrorStats();
     this.speedStats = new SpeedStats();
@@ -28,7 +32,10 @@ class App {
   }
 
   bindEvents() {
+    this.inputline.off();
+
     this.inputline.keypress(e => {
+
       if(this.letters.length == $(`.${this.untypedClass}`).length && e.keyCode != 13) {
         this.timeStart = Date.now();
       }
@@ -114,7 +121,11 @@ class App {
   }
 
   fill(isInit) {
-    this.letters = this.generator.getWords(8);
+
+    if(this.mode == 'beginner')
+      this.letters = this.generator.getOne();
+    else
+      this.letters = this.generator.getWords();
 
     if(!isInit) {
       this.errorStats.update(this.errorCounter, this.letters);
@@ -135,5 +146,3 @@ class App {
     this.inputline.width(this.wordline.width());
   }
 }
-
-window.App = App;

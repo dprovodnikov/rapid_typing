@@ -41,5 +41,16 @@ export default class Generator {
     return this._shuffle(this.words).join(' ');
   }
 
+  getOne() {
+    let output = [];
+
+    let word = words[this._rand(0, words.length)];
+
+    for(let i = 0; i < this.number; i++)
+      output.push(word);
+
+    return output.join(' ');
+  }
+
 }
 
