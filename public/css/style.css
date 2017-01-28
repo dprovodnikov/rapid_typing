@@ -16,6 +16,7 @@ html, body {
   width: 250px;
   background: #3d3d3d;
   color: #fff;
+  box-shadow: 0 0 10px 1px rgba(0, 0, 0, .6);
   font: bold 15px 'Ubuntu Mono';
   display: flex;
   align-items: center;
@@ -27,7 +28,7 @@ html, body {
 
 #github:hover {
   background: #2d2d2d;
-  
+  box-shadow: 0 0 10px 2px rgba(0, 0, 0, .6);
 }
 
 body {
@@ -42,7 +43,14 @@ body {
   justify-content: center;
   flex-direction: column;
   min-width: 1000px;
-  height: 100px;
+}
+
+.wordline-container {
+  margin: 80px 0 50px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .wordline,
@@ -84,7 +92,7 @@ span.untyped.wrong {
   align-items: center;
   width: 800px;
   position: absolute;
-  top: 100px;
+  top: 50px;
   left: 0;
   right: 0;
   margin: 0 auto;
@@ -196,3 +204,75 @@ span.untyped.wrong {
   color: lightgreen;
 }
 
+/************
+* keyboard
+*************/
+
+.keyline {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.key {
+  flex-shrink: 0;
+  border-radius: 3px;
+  border: 1px solid #aaa;
+  width: 55px;
+  height: 55px;
+  margin: 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font: normal 14px 'Ubuntu Mono';
+  color: #3d3d3d;
+  text-transform: capitalize;
+}
+
+.key.key-target {
+  background: lightgreen;
+}
+
+.subkey {
+  font: normal 13px 'Ubuntu Mono' !important;
+  transform: translate(50%, -50%);
+}
+
+#backspace,
+#tab {
+  width: calc(55px * 1.5);
+}
+
+#caps_lock,
+#enter {
+  width: calc(55px * 1.78);
+}
+
+#shift-l,
+#shift-r {
+  width: calc(55px * 2.32);
+}
+
+#space {
+  width: calc(55px * 6);
+  position: absolute;
+  left: calc(55px * 4);
+}
+
+#j, #f { text-decoration: underline; }
+
+#tab,
+#caps_lock,
+#shift-l {
+  padding: 8px;
+  text-align: left;
+  justify-content: flex-start;
+}
+
+#backspace,
+#enter,
+#shift-r {
+  padding: 8px;
+  text-align: right;
+  justify-content: flex-end;
+}

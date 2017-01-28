@@ -9,6 +9,7 @@ export default class Wordline {
 
     this.inputline = $('.inputline');
     this.wordline = $('.wordline');
+    this.keys = $('.key');
 
     this.inputline.val('')
 
@@ -20,6 +21,7 @@ export default class Wordline {
 
     this.untypedClass = 'untyped';
     this.wrongClass = 'wrong';
+    this.keyTargetClass = 'key-target';
     this.ctrlPressed = false;
 
     this.bindEvents();
@@ -29,6 +31,7 @@ export default class Wordline {
     * so the function will not do certain things like statistic update requests
     */
     this.fill(true);
+
   }
 
   bindEvents() {
@@ -43,7 +46,7 @@ export default class Wordline {
       let isOk = this.check(String.fromCharCode(e.keyCode));
 
       if(!isOk) {
-        this.letters.length ? this.highlight() : this.fill();
+        this.letters.length ? this.highlightMistake() : this.fill();
       } 
 
       return isOk;
@@ -74,7 +77,16 @@ export default class Wordline {
     });
   }
 
-  highlight() {
+  hightlightKeyTarget() {
+    let untyped = $(`.${this.untypedClass}`);
+
+    let keyTarget = untyped.eq(0).text().trim() || 'space';
+
+    this.keys.removeClass(this.keyTargetClass);
+    this.keys.filter(`#${keyTarget}`).addClass(this.keyTargetClass);
+  }
+
+  highlightMistake() {
     let untyped = $(`.${this.untypedClass}`);
 
     untyped.addClass(this.wrongClass)
@@ -117,6 +129,8 @@ export default class Wordline {
       this.clean();
     }
 
+    if(output) this.hightlightKeyTarget();
+
     return output;
   }
 
@@ -135,6 +149,7 @@ export default class Wordline {
       this.speedStats.update(timeEnd - this.timeStart, this.letters);
 
       this.errorCounter.reset();
+
     }
 
     let markup = '';
@@ -144,5 +159,11 @@ export default class Wordline {
     this.wordline.html(markup);
 
     this.inputline.width(this.wordline.width());
+    
+    this.hightlightKeyTarget();
+  }
+
+  setFocus() {
+    this.inputline.focus();
   }
 }

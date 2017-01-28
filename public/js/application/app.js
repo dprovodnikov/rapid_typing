@@ -17,6 +17,7 @@ export default class Application {
   setMode(mode) {
     this.modeTitle.html(mode);
     this.wordline = new Wordline(mode);
+    this.wordline.setFocus();
   }
 
   bindEvents() {
