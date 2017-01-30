@@ -15,15 +15,13 @@ export default class Application {
   }
 
   setMode(mode) {
-    this.modeTitle.html(mode);
+    this.modeTitle.html(mode.replace(/(\b\w)/, letter => letter.toUpperCase()));
     this.wordline = new Wordline(mode);
     this.wordline.setFocus();
   }
 
   bindEvents() {
-    this.modeSelect.click(e => e.stopPropagation());
-
-    this.modeTitle.click(e => {
+    this.modeSelect.click(e => {
       e.stopPropagation();
 
       this.modeSelect.toggleClass(this.openClass);

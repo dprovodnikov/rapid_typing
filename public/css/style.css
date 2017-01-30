@@ -61,10 +61,15 @@ body {
   display: inline-block;
 }
 
+.wordline,
+.inputline {
+  min-width: calc(55px * 15.5);
+}
+
 .inputline {
   outline: none;
   border: none;
-  border-bottom: 2px solid #3d3d3d;
+  border-bottom: 1px dotted #3d3d3d;
 }
 
 .inputline.wrong {
@@ -127,6 +132,7 @@ span.untyped.wrong {
 
 .error-stats span:first-of-type i,
 .speed-stats span:first-of-type i {
+  color: #3d3d3d;
   font-size: 20px;
   margin: 0 5px;
 }
@@ -157,10 +163,16 @@ span.untyped.wrong {
   font: normal 15px 'Ubuntu Mono';
   position: relative;
   cursor: pointer;
+  user-select: none;
 }
 
 .mode-select i {
+  color: #3d3d3d;
   font-size: 20px;
+}
+
+.mode-title {
+  color: #3d3d3d;
 }
 
 .mode-select.open .mode-dropdown {
@@ -173,26 +185,14 @@ span.untyped.wrong {
   bottom: 0;
   transform: translateY(115%);
   opacity: 0;
-  background: #3d3d3d;
+  background: #fff;
+  border: 1px solid #3d3d3d;
   border-radius: 3px;
   box-shadow: 2px 2px 10px 1px rgba(0, 0, 0, .2);
-  transition: all .2s;
-  color: #fff;
+  color: #3d3d3d;
   padding: 10px;
   pointer-events: none;
   min-width: 100%;
-}
-
-.mode-dropdown:after {
-  content: '';
-  position: absolute;
-  top: 0;
-  width: 0;
-  transform: translateY(-90%);
-  border-bottom: 7px solid #3d3d3d;
-  border-top: 7px solid transparent;
-  border-left: 7px solid transparent;
-  border-right: 7px solid transparent;
 }
 
 .mode-dropdown li {
@@ -201,8 +201,52 @@ span.untyped.wrong {
 }
 
 .mode-dropdown li:hover {
-  color: lightgreen;
+  color: #aaa;
 }
+
+/******************
+* keyboard toolbar
+*******************/
+.keyboard-toolbar {
+  width: calc(55px * 15.5);
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  user-select: none;
+}
+
+.tool {
+  font-size: 20px;
+  color: #3d3d3d;
+  cursor: pointer;
+  margin: 0 7px;
+  position: relative;
+}
+.tool:hover {
+  color: #6d6d6d;
+}
+.tool .hint {
+  display: block;
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  left: 0;
+  color: #fff;
+  background: #3d3d3d;
+  border-radius: 2px;
+  font: bold 14px 'Ubuntu Mono';
+  white-space: nowrap;
+  padding: 3px 5px;
+  transform: translateY(-140%);
+  transition: all .1s;
+  pointer-events: none;
+}
+.tool:hover .hint {
+  opacity: 1;
+  transform: translateY(-120%);
+}
+
+
 
 /************
 * keyboard
