@@ -42,7 +42,20 @@ export default class Keyboard {
 
       space.addClass(this.keyTargetClass + ' ' + this._handForSpace(pressed));
     } else {
+
+      let isUpper = this._isUpper(toPress);
+
+      toPress = toPress.toLowerCase();
+
+      if(isUpper) {
+
+        let side = this._isIn(this.leftHalf, toPress) ? 'r' : 'l'; // r - right hand (l - left)
+
+        this.keys.filter(`#shift-${side}`).addClass(this.keyTargetClass);
+      }
+
       this.keys.filter(`#${toPress}`).addClass(this.keyTargetClass);
+
     }
 
   }
