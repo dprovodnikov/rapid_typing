@@ -275,7 +275,9 @@ span.untyped.wrong {
 }
 
 .key.group-1.key-target,
-.key.group-8.key-target {
+.key.group-8.key-target,
+#shift-l.key-target,
+#shift-r.key-target {
   background: #AD7FA8;
 }
 
@@ -340,15 +342,14 @@ span.untyped.wrong {
   transform: translate(-64px, 65%);
 }
 
-#space.key-target.lefthand:after {
+#space.key-target:after {
   background-position: -232px 0;
   transform: translate(-24px, 45%);
 }
 
 #space.key-target.righthand:after {
-  background-image: url(../img/hands2.png);
-  background-position: -290px 0;
-  transform: translate(0, 45%);
+  background-position: -290px 0 !important;
+  transform: translate(100%, 45%);
 }
 
 .subkey {

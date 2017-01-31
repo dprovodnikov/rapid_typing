@@ -2,6 +2,7 @@ import Generator from './generator';
 import SpeedStats from './speed_stats'
 import ErrorStats from './error_stats';
 import Counter from './counter';
+import Keyboard from '../keyboard/keyboard';
 
 export default class Wordline {
   constructor(mode) {
@@ -9,7 +10,6 @@ export default class Wordline {
 
     this.inputline = $('.inputline');
     this.wordline = $('.wordline');
-    this.keys = $('.key');
 
     this.inputline.val('')
 
@@ -17,18 +17,18 @@ export default class Wordline {
     this.speedStats = new SpeedStats();
     this.errorCounter = new Counter();
     this.generator = new Generator({ interval: 6e4, number: 8 });
+    this.keyboard = new Keyboard();
     this.letters = '';
 
     this.untypedClass = 'untyped';
     this.wrongClass = 'wrong';
-    this.keyTargetClass = 'key-target';
     this.ctrlPressed = false;
 
     this.bindEvents();
 
     /*
-    * true means that it's an initial fill,
-    * so the function will not do certain things like statistic update requests
+    * the "true" arg means that it's an initial fill,
+    * so the function will not do certain things like statistic updates
     */
     this.fill(true);
 
@@ -82,8 +82,13 @@ export default class Wordline {
 
     let keyTarget = untyped.eq(0).text().trim() || 'space';
 
-    this.keys.removeClass(this.keyTargetClass);
-    this.keys.filter(`#${keyTarget}`).addClass(this.keyTargetClass);
+    let pressed = this.letters[this.letters.length-1]
+    if(untyped.length > 0)
+      pressed = untyped.eq(0).prev().text().trim() || 'space';
+    let toPress = keyTarget;
+
+    this.keyboard.highlight(pressed, toPress);
+
   }
 
   highlightMistake() {
@@ -129,7 +134,9 @@ export default class Wordline {
       this.clean();
     }
 
-    if(output) this.hightlightKeyTarget();
+    if(output) {
+      this.hightlightKeyTarget();
+    }
 
     return output;
   }
@@ -154,7 +161,7 @@ export default class Wordline {
 
     let markup = '';
     for(let letter of this.letters)
-      markup += `<span class="untyped letter">${letter.toLowerCase()}</span>`
+      markup += `<span class="untyped letter">${letter}</span>`
 
     this.wordline.html(markup);
 
