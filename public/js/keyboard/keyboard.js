@@ -20,6 +20,9 @@ export default class Keyboard {
       this.root.toggleClass('non-hands');
     });
 
+    this.tools.filter('#color-toggle').click(e => {
+      this.root.toggleClass('colorful');
+    });
   }
 
   _isUpper(letter) {

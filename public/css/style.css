@@ -281,6 +281,7 @@ span.untyped.wrong {
   color: #3d3d3d;
   text-transform: capitalize;
   position: relative;
+  transition: all .1s;
 }
 
 .key.group-1.key-target,
@@ -295,13 +296,50 @@ span.untyped.wrong {
   background: #729FCF
 }
 
+.key.group-3.key-target {background: #73D216}
+.key.group-5.key-target {background: #FCE94F}
+
 .key.group-4.key-target,
 .key.group-6.key-target {
   background: #FCAF3E
 }
 
-.key.group-3.key-target {background: #73D216}
-.key.group-5.key-target {background: #FCE94F}
+.colorful .key.non-group {
+  background: #ccc;
+}
+.colorful .key.group-1,
+.colorful .key.group-8,
+.colorful #shift-l,
+.colorful #shift-r {
+  background: #AD7FA8;
+}
+.colorful .key.group-3 {background: #73D216}
+.colorful .key.group-5 {background: #FCE94F}
+
+.colorful .key.group-1,
+.colorful .key.group-8,
+.colorful #shift-l,
+.colorful #shift-r {
+   background: #AD7FA8;
+}
+
+.colorful .key.group-2,
+.colorful .key.group-7 {
+  background: #729FCF
+}
+
+.colorful .key.group-4,
+.colorful .key.group-6 {
+  background: #FCAF3E
+}
+
+.colorful .key.group-3 {background: #73D216}
+.colorful .key.group-5 {background: #FCE94F}
+
+.colorful .key.key-target {
+  background: #aaa !important;
+  border: 1px solid #3d3d3d;
+}
 
 #space.key-target {background: #727272}
 
