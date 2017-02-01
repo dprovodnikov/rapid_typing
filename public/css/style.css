@@ -252,6 +252,15 @@ span.untyped.wrong {
 * keyboard
 *************/
 
+.keyboard-container {
+  opacity: 1;
+  transition: all .2s;
+}
+
+.keyboard-container.hidden {
+  opacity: 0;
+}
+
 .keyline {
   position: relative;
   display: flex;

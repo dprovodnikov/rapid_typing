@@ -1,11 +1,21 @@
 export default class Keyboard {
   constructor() {
+    this.root = $('.keyboard-container');
     this.keys = $('.keyboard-container .key');
     this.tools = $('.keyboard-toolbar .tool')
     this.keyTargetClass = 'key-target';
     this.righthandedSpace = 'righthand';
 
     this.leftHalf = 'q w e r t a s d f g z x c v b'.split(/\s/);
+
+    this._bindEvents();
+  }
+
+  _bindEvents() {
+    this.tools.filter('#keyboard-toggle').click(e => {
+      this.root.toggleClass('hidden')
+    });
+
   }
 
   _isUpper(letter) {
