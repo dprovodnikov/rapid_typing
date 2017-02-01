@@ -281,7 +281,7 @@ span.untyped.wrong {
   color: #3d3d3d;
   text-transform: capitalize;
   position: relative;
-  transition: all .1s;
+  transition: background .1s;
 }
 
 .key.group-1.key-target,
@@ -337,8 +337,7 @@ span.untyped.wrong {
 .colorful .key.group-5 {background: #FCE94F}
 
 .colorful .key.key-target {
-  background: #aaa !important;
-  border: 1px solid #3d3d3d;
+  border: 2px solid #3d3d3d;
 }
 
 #space.key-target {background: #727272}

@@ -43,7 +43,7 @@ export default class Wordline {
         this.timeStart = Date.now();
       }
 
-      let isOk = this.check(String.fromCharCode(e.keyCode));
+      let isOk = this.check(String.fromCharCode(e.charCode));
 
       if(!isOk) {
         this.letters.length ? this.highlightMistake() : this.fill();
@@ -64,6 +64,10 @@ export default class Wordline {
           let lastSpaceIndex = curValue.lastIndexOf(' ');
 
           this.rollback(lastSpaceIndex);
+
+          this.inputline.val(curValue.slice(0, lastSpaceIndex+1));
+
+          return false;
 
         } else return false
       }

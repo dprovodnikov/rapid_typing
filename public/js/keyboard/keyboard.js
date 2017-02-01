@@ -30,20 +30,11 @@ export default class Keyboard {
   }
 
   _isIn(array, item) {
-    let isIn = false;
-
-    for(let _item of array) {
-      if(_item == item) {
-        isIn = true
-        break;
-      }
-    }
-
-    return isIn;
+    return array.includes(item);
   }
 
   _handForSpace(pressed) {
-    return this._isIn(this.leftHalf, pressed) ? this.righthandedSpace : ''
+    return this.leftHalf.includes(pressed) ? this.righthandedSpace : ''
   }
 
   highlight(pressed, toPress) {
@@ -66,7 +57,7 @@ export default class Keyboard {
 
       if(isUpper) {
 
-        let side = this._isIn(this.leftHalf, toPress) ? 'r' : 'l'; // r - right hand (l - left)
+        let side = this.leftHalf.includes(toPress) ? 'r' : 'l'; // r - right hand (l - left)
 
         this.keys.filter(`#shift-${side}`).addClass(this.keyTargetClass);
       }
