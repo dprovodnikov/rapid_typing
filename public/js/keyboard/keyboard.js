@@ -13,7 +13,11 @@ export default class Keyboard {
 
   _bindEvents() {
     this.tools.filter('#keyboard-toggle').click(e => {
-      this.root.toggleClass('hidden')
+      this.root.toggleClass('hidden');
+    });
+
+    this.tools.filter('#hands-toggle').click(e => {
+      this.root.toggleClass('non-hands');
     });
 
   }

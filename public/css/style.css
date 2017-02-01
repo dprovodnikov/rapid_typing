@@ -316,6 +316,10 @@ span.untyped.wrong {
   z-index: 1;
 }
 
+.non-hands .key-target:after {
+  background-image: none !important;
+}
+
 .key.group-2.key-target:after {
   background-position: -58px 0;
   transform: translate(-12px, 75%);
