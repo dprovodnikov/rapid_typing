@@ -9,7 +9,7 @@ Demo: https://rapity.herokuapp.com/
 
 ## Deployment
 ### On production
-- Use the provided Procfile to deploy on [Heroku](https://www.heroku.com/) or related open-source alternatives  like Dokku or CapRover.
+- Use the provided Procfile to deploy on [Heroku](https://www.heroku.com/) or related open-source alternatives like [Dokku](https://dokku.com/) or [CapRover](https://caprover.com/).
 
 ## How to run locally
 ```bash
